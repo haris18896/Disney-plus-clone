@@ -431,7 +431,259 @@ const Wrap =styled.div`
 ```
 ******************************************************************************************************
 #### Detail page
+Now how are we going to change between detail page and home page???
+Ans: we will be using `React-Router-Dom`
 
+goto the App.js
+```
+npm install react-router-dom
+```
+import react-router-dom into `App.js`
+```js
+//src/App.js
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+```
+here in `App.js` we are going to use `Switch` it says that if the `Route` path is '/detail` then go to the detail page, but if the path is '/home' then go to the home page.
+```js
+//src/App.js
+import React from 'react';
+import './App.css';
+import './index.css'
+import Header from './components/Header';
+import Home from './components/Home';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Detail from './components/Detail';
+
+function App() {
+  return (
+    <div>
+      <Router>
+        <Header />
+
+        <Switch>
+
+          <Route path="/detail">
+            <Detail />
+          </Route>
+
+          <Route path="/detail">
+            <Home />
+          </Route>
+
+        </Switch>
+      </Router>
+
+    </div>
+  );
+}
+
+export default App;
+```
+
+#### now working on Detail page
+```js
+//src/components/detail.js
+import React from 'react'
+import styled from 'styled-components';
+
+
+function Detail() {
+    return (
+        <Container>
+            <Background>
+                <img src="https://cdn.vox-cdn.com/thumbor/eU72waq9EjmEsOS-sMcndQrGzXc=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/11604673/BO_RGB_s120_22a_cs_pub.pub16.318.jpg" alt="" />
+            </Background>
+        </Container>
+    )
+}
+
+export default Detail
+
+const Container = styled.div`
+    min-height: calc(10vh - 70px);
+    padding: o calc(3.5vw + 5px);
+`
+```
+
+now we have to edit the `Background` and `Img` tag
+```js
+//src/components/detail.js
+const Background = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+`
+```
+
+```js
+//src/components/detail.js
+const Container = styled.div`
+    //...
+    position: relative;
+`
+
+const Background = styled.div`
+    //....
+    z-index: -1;
+
+    img{
+        width: 100%;
+        height: 100;
+        object-fit: cover;
+    }
+`
+```
+at this point the pic will cover everything so we have to use `z-index: -1;` and then the NavBar will be there again at the top
+```js
+//src/components/detail.js
+const Background = styled.div`
+    //.....
+    opacity: 0.8;
+```
+no we are going to focus on Image title at this point for now.
+```js
+//src/components/detail.js
+const ImgTitle = styled.div`
+    height: 30vh;
+    min-height: 170px;
+    width: 35vw;
+    min-width: 200px;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+`
+```
+Now focusing on the controls of detail page. in controls we have 4 buttons
+```js
+//src/components/detail.js
+        <Container>
+            //.....
+            <Controls>
+                <PlayButton>
+
+                </PlayButton>
+                <TrailerButton>
+
+                </TrailerButton>
+                <AddButton>
+
+                </AddButton>
+                <GroupWatchButton>
+
+                </GroupWatchButton>
+            </Controls>
+        </Container>
+
+
+const Controls = styled.div`
+
+`
+const PlayButton = styled.button`
+
+`
+const TrailerButton = styled.button`
+
+`
+const AddButton = styled.button`
+
+`
+const GroupWatchButton = styled.button`
+
+`
+```
+`PlayButton` and `TrailerButton` has almost same properties except for some, that's why we are going to import the `PlayButton properties to the `Trailer Button`
+```js
+//src/components/detail.js
+                <PlayButton>
+                    <img src="/images/play-icon-black.png" alt="" />
+                    <span>PLAY</span>
+                </PlayButton>
+                <TrailerButton>
+                    <img src="/images/play-icon-white.png" alt="" />
+                    <span>Trailer</span>
+                </TrailerButton>
+
+const Controls = styled.div`
+    display: flex;
+
+`
+const PlayButton = styled.button`
+    border-radius: 4px;
+    font-size: 15px;
+    padding: 0px 24px;
+    margin-right: 22px;
+    margin-left:22px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    background-color: rgb(249, 249, 249);
+    border: none;
+    letter-spacing: 1.8px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: rgb(198, 198, 198);
+    }
+
+`
+const TrailerButton = styled(PlayButton)`
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgb(249,249,249);
+    color: rgb(249,249,249);
+    text-transform: uppercase;
+`
+```
+
+now working on `AddButton` and `GroupWatchButton`
+```js
+//src/components/detail.js
+//....
+                <AddButton>
+                    <span>+</span>
+                </AddButton>
+                <GroupWatchButton>
+                    <img src="/images/group-icon.png" alt="" />
+                </GroupWatchButton>
+
+const AddButton = styled.button`
+    margin-right: 16px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+
+    span{
+        font-size: 30px;
+        color: white;
+    }
+`
+const GroupWatchButton = styled(AddButton)`
+    background-color: rgba(0,0,0,1)
+`
+```
 
 
 
