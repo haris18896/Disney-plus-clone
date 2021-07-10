@@ -3,6 +3,8 @@ import './App.css';
 import './index.css'
 import Header from './components/Header';
 import Home from './components/Home';
+import Detail from './components/Detail';
+import Login from './components/Login';
 
 import {
   BrowserRouter as Router,
@@ -11,7 +13,7 @@ import {
   Link
 } from "react-router-dom";
 
-import Detail from './components/Detail';
+
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
         <Header />
 
         <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
 
           <Route path="/detail">
             <Detail />
