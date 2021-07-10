@@ -64,10 +64,9 @@ function Home() {
 ```
 in `ImgSlider` we are doing something called `react-slick`
 
-###```
-npm install react-slick --save
-npm install slick-carousel
-```
+###`npm install react-slick --save`
+###`npm install slick-carousel`
+
 here we have to import the slider and the css files.
 and also we are going to style `Slider` by ourself.
 
