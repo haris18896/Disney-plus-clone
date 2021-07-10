@@ -63,7 +63,8 @@ function Home() {
 
 ```
 in `ImgSlider` we are doing something called `react-slick`
-```
+
+###```
 npm install react-slick --save
 npm install slick-carousel
 ```
