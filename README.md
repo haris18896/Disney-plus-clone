@@ -278,6 +278,77 @@ function Header() {
 
 now dispatch the data.
 
+```js
+//src/components/Header.js
+function Header() {
+    const dispatch = useDispatch();
+    const userName = useSelector(selectUserName);
+    const userPhoto = useSelector(selectUserPhoto);
+
+    const signIn = () => {
+        auth.signInWithPopup(provider)
+        .then((result) => {
+            // console.log(result);
+            // setting up the user data and dispatching userLogin
+            let user = result.user
+            dispatch(setUserLoginDetails({
+                name : user.displayName,
+                email : user.email,
+                photo : user.photoURL
+            }))
+            history.push('/');
+        })
+    }
+//..........
+```
+Now signing out, and then on sign out redirecting to login page. and for that we are going to use `useHistory`
+
+```js
+//src/components/Header.js
+    const signOut = () => {
+        auth.signOut()
+        .then(()=>{
+            dispatch(setSignOutState());
+            history.push('/login')
+        })
+    }
+```
+
+now signing out on clicking on user image.
+```js
+<UserImg onClick={signOut} src="/images/haris.png"/>
+```
+
+at this point when we logged in , and then refresh the page, we get logged out, because the state is changed.
+for that we are going to use `useEffect`
+```js
+//src/components/Header.js
+//.......
+useEffect(() => {
+        auth.onAuthStateChanged(async (user) => {
+            if(user){
+                dispatch(setUserLoginDetails({
+                    name : user.displayName,
+                    email : user.email,
+                    photo : user.photoURL
+                }))
+                history.push('/')
+            }
+        })
+    }, [])
+//.......
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
