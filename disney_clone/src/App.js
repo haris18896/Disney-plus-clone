@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import './App.css';
 import './index.css'
@@ -24,7 +25,7 @@ function App() {
             <Login />
           </Route>
 
-          <Route path="/detail">
+          <Route path="/detail/:id">
             <Detail />
           </Route>
 
