@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
@@ -91,7 +92,7 @@ function Header() {
                         </a>
                     </NavMenu>
 
-                    <UserImg onClick={signOut} src="/images/haris.png"/>
+                    <UserImg onClick={signOut} src={userPhoto}/>
                 </>
             }
 

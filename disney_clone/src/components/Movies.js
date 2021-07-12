@@ -21,6 +21,18 @@ function Movies() {
                         </Wrap>
                     ))
                 }
+                <Wrap>
+                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/60E0E186B331F83A7412290932F9F3BA5F9C4C11FA82ED1D9B6F63F301BD9372/scale?width=1200&aspectRatio=1.78&format=jpeg" alt=""/>
+                </Wrap>
+                <Wrap>
+                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/60E0E186B331F83A7412290932F9F3BA5F9C4C11FA82ED1D9B6F63F301BD9372/scale?width=1200&aspectRatio=1.78&format=jpeg" alt=""/>
+                </Wrap>
+                <Wrap>
+                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/60E0E186B331F83A7412290932F9F3BA5F9C4C11FA82ED1D9B6F63F301BD9372/scale?width=1200&aspectRatio=1.78&format=jpeg" alt=""/>
+                </Wrap>
+                <Wrap>
+                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/60E0E186B331F83A7412290932F9F3BA5F9C4C11FA82ED1D9B6F63F301BD9372/scale?width=1200&aspectRatio=1.78&format=jpeg" alt=""/>
+                </Wrap>
             </Content>
         </Container>
     )
